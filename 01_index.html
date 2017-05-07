@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.2.0.min.js"></script>
 
     <script type="text/javascript">
       function draw(data) {
@@ -21,18 +21,19 @@
               .attr("width", width + margin)
               .attr("height", height + margin)
             .append('g')
-                .attr('class','chart');
+              .attr('class', 'chart');
 
-          var parseDate = d3.time.format( "%Y-%m" ).parse;
-          data.forEach( function(d) {
-              d.date = parseDate( d.date);
-          });
+          //Sources: https://discussions.udacity.com/t/uncaught-typeerror-a-scaletime-is-not-a-function/244966/4
+          //         http://dimplejs.org/examples_viewer.html?id=bars_vertical_stacked
+
           var myChart = new dimple.chart(svg, data);
-          //myChart.setBounds(60, 30, 510, 305);
-          var x = myChart.addTimeAxis("x", "date");
-          //x.addOrderRule("date");
+          myChart.setBounds(60, 30, 510, 305);
+          //var x = myChart.addTimeAxis("x", "year");
+          //x.dateParseFormat = "%Y";
+          //x.tickFormat = "%Y"
+          myChart.addCategoryAxis("x", "carrier_name")
           myChart.addMeasureAxis("y", "arr_flights");
-          myChart.addSeries(null, dimple.plot.bar);
+          myChart.addSeries("year", dimple.plot.bar);
           myChart.draw();
       }
 
