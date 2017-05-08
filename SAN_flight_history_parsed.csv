@@ -1,4 +1,4 @@
-year,month,date,carrier,carrier_name,type,n_flights
+Year,Month,Date,Carrier,Carrier Name,Type,Number of Flights
 2003,6,2003-06,AA,American Airlines Inc.,On Time,502
 2003,6,2003-06,AA,American Airlines Inc.,Delayed,115
 2003,6,2003-06,AS,Alaska Airlines Inc.,On Time,313

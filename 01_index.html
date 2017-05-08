@@ -31,10 +31,10 @@
           //var x = myChart.addTimeAxis("x", "year");
           //x.dateParseFormat = "%Y";
           //x.tickFormat = "%Y"
-          mainChart.addCategoryAxis("y", "carrier_name")
-          mainChart.addMeasureAxis("x", "n_flights");
-          mainChart.addSeries("type", dimple.plot.bar);
-          mainChart.addLegend(60, 10, 510, 20, "right")
+          mainChart.addCategoryAxis("y", "Carrier Name")
+          mainChart.addMeasureAxis("x", "Number of Flights");
+          mainChart.addSeries("Type", dimple.plot.bar);
+          mainChart.addLegend(60, 10, 510, 20, "left")
           
 
           //Animations: source http://dimplejs.org/advanced_examples_viewer.html?id=advanced_storyboard_control
@@ -55,11 +55,11 @@
           indicator.setBounds(1240, 49, 153, 600);
 
           // Add dates along the y axis
-          var y = indicator.addCategoryAxis("y", "year");
+          var y = indicator.addCategoryAxis("y", "Year");
           y.addOrderRule("Date", "Desc");
 
           // Use number of flights for bar size and hide the axis
-          var x = indicator.addMeasureAxis("x", "n_flights");
+          var x = indicator.addMeasureAxis("x", "Number of Flights");
           x.hidden = true;
 
           // Add the bars to the indicator and add event handlers
@@ -80,7 +80,7 @@
               .attr("transform", "translate(18, 0.5)");
 
           // Add a storyboard to the main chart and set the tick event
-          var story = mainChart.setStoryboard("year", onTick);
+          var story = mainChart.setStoryboard("Year", onTick);
           // Change the frame duration
           story.frameDuration = frame;
           // Order the storyboard by date
