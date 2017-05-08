@@ -13,8 +13,8 @@
 
           "use strict";
           var margin = 75,
-              width = 1400 - margin,
-              height = 600 - margin;
+              width = 1800 - margin,
+              height = 900 - margin;
 
           var svg = d3.select("body")
             .append("svg")
@@ -26,15 +26,103 @@
           //Sources: https://discussions.udacity.com/t/uncaught-typeerror-a-scaletime-is-not-a-function/244966/4
           //         http://dimplejs.org/examples_viewer.html?id=bars_vertical_stacked
 
-          var myChart = new dimple.chart(svg, data);
-          myChart.setBounds(60, 30, 510, 305);
+          var mainChart = new dimple.chart(svg, data);
+          mainChart.setBounds(140, 30, 1000, 600);
           //var x = myChart.addTimeAxis("x", "year");
           //x.dateParseFormat = "%Y";
           //x.tickFormat = "%Y"
-          myChart.addCategoryAxis("x", "carrier_name")
-          myChart.addMeasureAxis("y", "arr_flights");
-          myChart.addSeries("year", dimple.plot.bar);
-          myChart.draw();
+          mainChart.addCategoryAxis("y", "carrier_name")
+          mainChart.addMeasureAxis("x", "n_flights");
+          mainChart.addSeries("type", dimple.plot.bar);
+          mainChart.addLegend(60, 10, 510, 20, "right")
+          
+
+          //Animations: source http://dimplejs.org/advanced_examples_viewer.html?id=advanced_storyboard_control
+
+          // Create the indicator chart on the right of the main chart
+          var indicator = new dimple.chart(svg, data);
+
+          // Pick blue as the default and orange for the selected month
+          var defaultColor = indicator.defaultColors[0];
+          var indicatorColor = indicator.defaultColors[2];
+
+          // The frame duration for the animation in milliseconds
+          var frame = 2000;
+
+          var firstTick = true;
+
+          // Place the indicator bar chart to the right
+          indicator.setBounds(1240, 49, 153, 600);
+
+          // Add dates along the y axis
+          var y = indicator.addCategoryAxis("y", "year");
+          y.addOrderRule("Date", "Desc");
+
+          // Use number of flights for bar size and hide the axis
+          var x = indicator.addMeasureAxis("x", "n_flights");
+          x.hidden = true;
+
+          // Add the bars to the indicator and add event handlers
+          var s = indicator.addSeries(null, dimple.plot.bar);
+          s.addEventHandler("click", onClick);
+          // Draw the side chart
+          indicator.draw();
+
+          // Remove the title from the y axis
+          y.titleShape.remove();
+
+          // Remove the lines from the y axis
+          y.shapes.selectAll("line,path").remove();
+          // Move the y axis text inside the plot area
+          y.shapes.selectAll("text")
+              .style("text-anchor", "start")
+              .style("font-size", "11px")
+              .attr("transform", "translate(18, 0.5)");
+
+          // Add a storyboard to the main chart and set the tick event
+          var story = mainChart.setStoryboard("year", onTick);
+          // Change the frame duration
+          story.frameDuration = frame;
+          // Order the storyboard by date
+          story.addOrderRule("Date");
+
+          //draw MainChart
+          mainChart.draw();
+
+          // Orphan the legends as they are consistent but by default they
+          // will refresh on tick
+          mainChart.legends = [];
+          // Remove the storyboard label because the chart will indicate the
+          // current month instead of the label
+          story.storyLabel.remove();
+
+          // On click of the side chart
+          function onClick(e) {
+              // Pause the animation
+              story.pauseAnimation();
+              // If it is already selected resume the animation
+              // otherwise pause and move to the selected month
+              if (e.yValue === story.getFrameValue()) {
+                  story.startAnimation();
+              } else {
+                  story.goToFrame(e.yValue);
+                  story.pauseAnimation();
+              }
+          }
+          // On tick of the main charts storyboard
+          function onTick(e) {
+              if (!firstTick) {
+                  // Color all shapes the same
+                  s.shapes
+                      .transition()
+                      .duration(frame / 2)
+                      .style("fill", function (d) { return (d.y === e ? indicatorColor.fill : defaultColor.fill) })
+                      .style("stroke", function (d) { return (d.y === e ? indicatorColor.stroke : defaultColor.stroke) });
+              }
+              firstTick = false;
+          }
+
+
       }
 
 
@@ -43,7 +131,7 @@
   <body>
     <script type="text/javascript">
 
-    d3.csv("SAN_flight_history.csv", draw);
+    d3.csv("SAN_flight_history_parsed.csv", draw);
     </script>
 </body>
 </html>
