@@ -28,9 +28,6 @@
 
           var mainChart = new dimple.chart(svg, data);
           mainChart.setBounds(140, 30, 1000, 600);
-          //var x = myChart.addTimeAxis("x", "year");
-          //x.dateParseFormat = "%Y";
-          //x.tickFormat = "%Y"
           mainChart.addCategoryAxis("y", "Carrier Name")
           var x = mainChart.addMeasureAxis("x", "Number of Flights");
           x.overrideMax = 40000;
