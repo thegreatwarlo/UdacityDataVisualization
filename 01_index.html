@@ -32,7 +32,9 @@
           //x.dateParseFormat = "%Y";
           //x.tickFormat = "%Y"
           mainChart.addCategoryAxis("y", "Carrier Name")
-          mainChart.addMeasureAxis("x", "Number of Flights");
+          var x = mainChart.addMeasureAxis("x", "Number of Flights");
+          x.overrideMax = 40000;
+          x.overrideMin = 0;
           mainChart.addSeries("Type", dimple.plot.bar);
           mainChart.addLegend(60, 10, 510, 20, "left")
           
