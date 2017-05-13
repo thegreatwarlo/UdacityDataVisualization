@@ -34,7 +34,7 @@
           x.overrideMin = 0;
           mainChart.addSeries("Type", dimple.plot.bar);
           mainChart.addLegend(60, 10, 510, 20, "left")
-          
+         
 
           //Animations: source http://dimplejs.org/advanced_examples_viewer.html?id=advanced_storyboard_control
 
@@ -55,7 +55,7 @@
 
           // Add dates along the y axis
           var y = indicator.addCategoryAxis("y", "Year");
-          y.addOrderRule("Date", "Desc");
+          y.addOrderRule("Year", "Desc");
 
           // Use number of flights for bar size and hide the axis
           var x = indicator.addMeasureAxis("x", "Number of Flights");
@@ -83,7 +83,7 @@
           // Change the frame duration
           story.frameDuration = frame;
           // Order the storyboard by date
-          story.addOrderRule("Date");
+          story.addOrderRule("Year");
 
           //draw MainChart
           mainChart.draw();
@@ -130,7 +130,7 @@
   <body>
     <script type="text/javascript">
 
-    d3.csv("SAN_flight_history_parsed.csv", draw);
+    d3.csv("SAN_flight_history_parsed2.csv", draw);
     </script>
 </body>
 </html>
