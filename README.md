@@ -86,5 +86,7 @@ RESOURCES:
 - https://discussions.udacity.com/t/uncaught-typeerror-a-scaletime-is-not-a-function/244966/4
 - http://dimplejs.org/examples_viewer.html?id=bars_vertical_stacked
 - http://dimplejs.org/advanced_examples_viewer.
+- http://annapawlicka.com/pretty-charts-with-dimple-js/ 
+- http://stackoverflow.com/questions/35434829/get-correct-percent-in-dimplejs-vertical-100-bar-chart
 
 
