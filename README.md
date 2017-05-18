@@ -17,54 +17,41 @@ Main Takeaways:
 
 DESIGN
 
-My goal was to compared the volume and performance of each airline in terms of delayed 
-flights for each year. Stacked bars allowed me to both show the overall number 
-of arriving flights for each airline and the proportion of these that was 
-delayed. Also, I was able to compare the year over year performance by 
-animating through each year in the data in order to show a time trend.
+My goal was to compared the volume and performance of each airline in terms of delayed flights for each year. Stacked bars allowed me to both show the overall number of arriving flights for each airline and the proportion of these that was delayed. Also, I was able to compare the year over year performance by animating through each year in the data in order to show a time trend.
 
-After receiving the first feedback, I decided to fix the x axis so it wouldn't
-rescaled after each animation. This allowed the viewer to better compare the 
-number of flights between two years.
+After receiving the first feedback (Hanna's), I decided to fix the x axis so it wouldn't rescale after each animation. This allowed the viewer to better compare the number of flights between two years.
 
-The second and third feedback that I received motivated me to add more flavor
-to the data related to delays by airline by distinguishing between the ones 
-that were airline specific and the ones that weren't. I also added a
-short paragraph to describe how the visualization is interactive and what the
-length of the bars on the right of the main graph represent
+The second (Lea's) and third (Paolo's) feedback that I received motivated me to add more flavorto the data related to delays by airline by distinguishing between the ones that were airline specific and the ones that weren't. I also added a short paragraph to describe how the visualization is interactive and what the length of the bars on the right of the main graph represent
 
 
 FEEDBACK
 
-1 - "I like the way your use of the graph, but the x axis moving around is kind
-of distracting. I think if it stayed the same it would be easier for me to 
-compare between two years. Right now I cannot really get a precise idea of the
-difference in the number of flights between two years unless I pay very close
-attention to the value of the axis"
+
+#1 - Hanna
+"I like the way your use of the graph, but the x axis moving around is kind of distracting. I think if it stayed the same it would be easier for me to compare between two years. Right now I cannot really get a precise idea of the difference in the number of flights between two years unless I pay very close attention to the value of the axis"
 
 
-2 - What do you notice in the visualization?
-"First, I noticed that Southwest supports the most flights by a much larger 
-margin than expected. Second, I noticed that Southwest had rapid sustained 
-growth through 2009, before decreasing in volume, but increasing in on-time 
-flights through present. "
+
+#2 - Lea
+What do you notice in the visualization?
+"First, I noticed that Southwest supports the most flights by a much larger margin than expected. Second, I noticed that Southwest had rapid sustained growth through 2009, before decreasing in volume, but increasing in on-time flights through present. "
 
 What questions do you have about the data?
 "How did flight distance impact this data? How did price point?"
 
 What relationships do you notice?
-"The decrease in flight volume across non-Southwest airlines correlates with an 
-increase in Southwest flight volume."
+"The decrease in flight volume across non-Southwest airlines correlates with an increase in Southwest flight volume."
 
 What do you think is the main takeaway from this visualization?
 "Southwest is taking over the airline business in San Diego."
 
 Is there something you don’t understand in the graphic?
-"I paid most attention to the changes in flight volume and less attention to the
-changes in the ontime/delayed ratio." 
+"I paid most attention to the changes in flight volume and less attention to the changes in the ontime/delayed ratio." 
 
 
-3 - What do you notice in the visualization?
+
+#3 - Paolo
+What do you notice in the visualization?
 "Southwest consolidating its presence over time in SAN"
 
 What questions do you have about the data?
@@ -88,5 +75,6 @@ RESOURCES:
 - http://dimplejs.org/advanced_examples_viewer.
 - http://annapawlicka.com/pretty-charts-with-dimple-js/ 
 - http://stackoverflow.com/questions/35434829/get-correct-percent-in-dimplejs-vertical-100-bar-chart
+- https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple#filterData
 
 
